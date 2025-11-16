@@ -1,4 +1,5 @@
 
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Track from "./pages/Track";
@@ -8,6 +9,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import Driver from "./components/Driver";
+import Protected from "./components/Protected";
 
 
 const App = () => {
@@ -15,12 +17,12 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/track" element={<Track />} />
-        <Route path="/book" element={<Book />} />
-        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/track" element={<Protected><Track /></Protected>} />
+        <Route path="/book" element={<Protected><Book /></Protected>} />
+        <Route path="/notifications" element={<Protected><Notifications /></Protected>} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/driver" element={<Driver />} />
+        <Route path="/register" element={ <Register />} />
+        <Route path="/driver" element={<Protected><Driver /></Protected>} />
 
         {/* Catch-all route */}
         <Route path="*" element={<NotFound />} />

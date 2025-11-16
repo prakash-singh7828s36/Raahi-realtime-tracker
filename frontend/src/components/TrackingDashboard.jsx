@@ -67,7 +67,7 @@ const TrackingDashboard = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Map Placeholder */}
-        <div className="mapPlaceholder h-33 w-60 bg-[#282828] lg:col-span-2  animate-fade-in-up ">
+        <div className="mapPlaceholder h-33 w-80 bg-[#282828] lg:col-span-2  animate-fade-in-up ">
                 {/* <LiveMap driverMode={true} driverId="bus-101" /> */}
           <LiveMap/>
         </div>

@@ -9,7 +9,7 @@ const Dashboard = () => {
         height: "400px", 
         border: "1px solid #ccc",
         borderRadius: "8px",
-        overflow: "hidden"
+        overflow: "hidden",
       }}
     >
       <LiveMap />

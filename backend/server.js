@@ -1,25 +1,25 @@
+
+
 import app from "./src/app.js";
 import connectDB from "./src/db/db.js";
-import cors from "cors";
-import cookieParser from "cookie-parser";
-
 import { createServer } from "http";
 import setupSocket from "./src/sockets/socket.js";
 
-
 const httpServer = createServer(app);
 
-
-app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true               
-}));
-
-
 setupSocket(httpServer);
-connectDB()
 
+(async () => {
+  try {
+    await connectDB();    // <-- NOW returns a promise
+    console.log("✅ Database connected");
 
-httpServer.listen(3000, () => {
-    console.log("server is running on port 3000")
-})
+    const PORT = 3000;
+    httpServer.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
+    });
+
+  } catch (err) {
+    console.log("❌ Database connection failed:", err);
+  }
+})();
