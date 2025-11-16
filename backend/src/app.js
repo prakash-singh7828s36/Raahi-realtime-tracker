@@ -19,7 +19,7 @@ const razorpay = new Razorpay({
 
 const app = express();
 
-
+app.use(express.static('public'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
@@ -29,6 +29,10 @@ app.use(cors({
 
 
 app.use("/auth", authRoutes)
+
+app.get("*name", (req , res)=>{
+  res.sendFile(__dirname + "/public/index.html")
+})
 
 app.post('/create/orderId', async (req, res) => {
   const options = {
